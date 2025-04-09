@@ -1,0 +1,24 @@
+<!-- Página HTML en .NET (ASP.NET Razor Pages)-->
+@{
+    Layout = null;
+    int? resultado = null;
+    if (IsPost) {
+        int num1 = Convert.ToInt32(Request.Form["num1"]);
+        int num2 = Convert.ToInt32(Request.Form["num2"]);
+        resultado = num1 + num2;
+    }
+}
+<!DOCTYPE html>
+<html>
+<head><title>Suma .NET</title></head>
+<body>
+    <form method="post">
+        Número 1: <input type="number" name="num1" required><br>
+        Número 2: <input type="number" name="num2" required><br>
+        <input type="submit" value="Sumar">
+    </form>
+    @if (resultado.HasValue) {
+        <p>Resultado: @resultado</p>
+    }
+</body>
+</html>
